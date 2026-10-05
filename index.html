@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UP KEDGE 2027</title>
+<meta name="description" content="SAS PGE 2027 : universités partenaires, démarches et dates pour un départ Fall 2027.">
+<meta name="theme-color" content="#14132A">
+<meta name="color-scheme" content="dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="UP KEDGE 2027">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14132A; --bg2:#1B1A35; --card:#26254180; --card-solid:#262541; --line:#33324F;
+  --text:#F5F5FA; --muted:#A3A2BC; --dim:#6F6E8C;
+  --pink:#E9407A; --coral:#F5835F; --grad:linear-gradient(135deg,#E9407A 0%,#F5835F 100%);
+  --ok:#4FD1A5; --warn:#F7B267; --bad:#FF6B81;
+  --font:"Poppins", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  --nav-h:66px;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:var(--bg);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 var(--font);padding-bottom:calc(var(--nav-h) + 20px);-webkit-tap-highlight-color:transparent}
+a{color:var(--coral)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+svg{display:block}
+
+/* App bar */
+.appbar{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:14px 18px 6px;max-width:560px;margin:0 auto}
+.appbar .ttl{text-align:center;font-weight:700;font-size:15px;line-height:1.2}
+.appbar .ttl small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
+.appbar .logo{height:26px;width:auto;background:#fff;border-radius:7px;padding:3px 5px}
+.appbar .me{justify-self:end;width:36px;height:36px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-weight:700;font-size:14px}
+
+main{max-width:560px;margin:0 auto;padding:0 18px}
+section[data-tab]{display:none}
+section[data-tab].on{display:block}
+.h-big{font:800 32px/1.1 var(--font);letter-spacing:-.02em;margin:10px 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 16px;font-weight:500}
+.caps{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:26px 0 12px}
+p{margin:0 0 10px}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:14px;background:var(--grad);color:#fff;text-decoration:none;cursor:pointer;min-height:40px}
+.btn.ghost{background:var(--card-solid);color:var(--text)}
+.btn.sm{padding:5px 11px;font-size:12.5px;min-height:30px;border-radius:6px}
+.more{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:0;margin:18px auto 0;font-weight:600;font-size:13px}
+.more svg{width:26px;height:26px}
+
+/* ---------- Map (home) ---------- */
+.map{position:relative;margin:0 -18px;overflow:hidden}
+.map svg{width:100%;height:auto}
+.map .pin{cursor:pointer}
+.map .pin:focus{outline:none}
+.map .pin:focus-visible circle.hit{stroke:var(--coral);stroke-width:2}
+.trip{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:4px}
+.trip .ico{width:26px;height:26px;color:var(--text);margin-bottom:6px}
+.trip .big{font:800 40px/1 var(--font);letter-spacing:-.02em}
+.trip .big span{font-size:17px;font-weight:600;margin-left:6px;color:var(--muted)}
+.stack{display:flex;align-items:center}
+.stack .f{width:38px;height:38px;border-radius:50%;background:var(--card-solid);border:2px solid var(--bg);display:grid;place-items:center;font-size:19px;margin-left:-10px}
+.stack .f:first-child{margin-left:0}
+.stack .f.g{background:var(--grad)}
+.stack .others{font-size:11.5px;line-height:1.25;margin-left:8px;font-weight:600}
+.stack .others span{color:var(--muted);font-weight:500;display:block}
+.place{font-weight:700;font-size:18px;margin:18px 0 2px}
+.addr{color:var(--muted);font-size:13px;line-height:1.5;font-weight:500;margin-bottom:12px}
+
+/* Alerts */
+.note{background:var(--card-solid);border-radius:12px;padding:13px 14px;margin:10px 0;position:relative;overflow:hidden}
+.note::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad)}
+.note.bad::before{background:var(--bad)}
+.note.warn::before{background:var(--warn)}
+.note.ok::before{background:var(--ok)}
+.note b.t{display:block;font-weight:700;margin-bottom:2px}
+.note p{color:#D8D7E6;font-size:13.5px;margin:0}
+ul.clean{margin:6px 0 0;padding-left:18px;color:#D8D7E6;font-size:13.5px}
+ul.clean li{margin:5px 0}
+
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.qt{background:var(--card-solid);border-radius:12px;padding:14px 8px;text-align:center;text-decoration:none;color:var(--text);font-size:12px;font-weight:600;line-height:1.3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.qt svg{width:30px;height:30px;stroke:currentColor}
+.qt.hot{background:var(--grad)}
+
+/* ---------- Explorer ---------- */
+.searchbar{display:flex;background:var(--card-solid);border-radius:8px;overflow:hidden}
+.searchbar input{flex:1;border:0;background:transparent;padding:11px 14px;font-size:16px;min-width:0}
+.searchbar input::placeholder{color:var(--dim)}
+.searchbar button{border:0;width:52px;background:var(--grad);display:grid;place-items:center;cursor:pointer}
+.searchbar button svg{width:20px;height:20px}
+.regions{display:flex;gap:6px;overflow-x:auto;margin:14px -18px 0;padding:0 18px;scrollbar-width:none}
+.regions::-webkit-scrollbar,.hscroll::-webkit-scrollbar{display:none}
+.regions button{all:unset;cursor:pointer;flex:0 0 auto;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:500;color:var(--dim)}
+.regions button[aria-pressed="true"]{background:var(--grad);color:#fff;font-weight:600}
+.hscroll{display:flex;gap:14px;overflow-x:auto;margin:0 -18px;padding:2px 18px 6px;scroll-snap-type:x mandatory;scroll-padding-left:18px;scrollbar-width:none}
+.dcard{flex:0 0 200px;scroll-snap-align:start;background:var(--card-solid);border-radius:10px;overflow:hidden;cursor:pointer;border:0;padding:0;text-align:left}
+.dcard .img{height:118px;position:relative}
+.dcard .img svg{width:100%;height:100%}
+.dcard .tx{padding:9px 11px 11px;display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:start}
+.dcard .nm{font-weight:700;font-size:13.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dcard .sc{text-align:center;font-weight:700;font-size:13px;line-height:1.1}
+.dcard .sc small{display:block;font-size:10px;color:var(--muted);font-weight:500}
+.dcard .row{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.dcard .ct{font-size:11.5px;color:var(--muted)}
+.tiles .tile{flex:0 0 92px;height:92px;border-radius:10px;background:var(--card-solid);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:0;font-size:12px;font-weight:600;scroll-snap-align:start;position:relative}
+.tiles .tile .fl{font-size:30px;line-height:1}
+.tiles .tile .n{position:absolute;top:6px;right:8px;font-size:10.5px;color:var(--muted);font-weight:600}
+.tiles .tile[aria-pressed="true"]{background:var(--grad)}
+.tiles .tile[aria-pressed="true"] .n{color:#fff}
+.filters{display:flex;gap:8px;overflow-x:auto;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none}
+.filters select,.chip{flex:0 0 auto;border:0;background:var(--card-solid);border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:500;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--grad);font-weight:600}
+.score{display:flex;gap:10px;align-items:center;margin-top:10px;font-size:13px;flex-wrap:wrap;color:var(--muted)}
+.score input{width:74px;padding:6px 9px;border-radius:8px;border:0;background:var(--card-solid);font-size:16px;color:var(--text)}
+.count-line{font-size:12.5px;color:var(--muted);margin:12px 0 4px}
+.lrow{display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;background:transparent;border:0;border-bottom:1px solid var(--line);padding:11px 0;width:100%;text-align:left;cursor:pointer}
+.lrow .th{width:58px;height:58px;border-radius:9px;overflow:hidden;position:relative}
+.lrow .th svg{width:100%;height:100%}
+.lrow .th .fl{position:absolute;right:3px;bottom:2px;font-size:15px}
+.lrow .nm{font-weight:600;font-size:14px;line-height:1.3}
+.lrow .ct{font-size:12px;color:var(--muted)}
+.lrow .req{text-align:right;font-size:12px;color:var(--muted);line-height:1.45}
+.lrow .req b{color:var(--text);font-weight:700}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:5px;background:#33324F;color:#D8D7E6}
+.tag.ok{background:rgba(79,209,165,.15);color:var(--ok)}
+.tag.no{background:rgba(255,107,129,.15);color:var(--bad)}
+.tag.dd{background:var(--grad);color:#fff}
+.tag.fav{background:transparent;color:var(--coral);padding:0}
+.empty{text-align:center;padding:28px 10px;color:var(--muted);font-size:13.5px}
+
+/* ---------- Detail sheet ---------- */
+.sheet{position:fixed;inset:0;z-index:60;background:var(--bg);overflow-y:auto;display:none;-webkit-overflow-scrolling:touch}
+.sheet.on{display:block}
+.sheet .hero{position:relative;height:56vh;min-height:360px;max-height:520px}
+.sheet .hero svg.sc{position:absolute;inset:0;width:100%;height:100%}
+.sheet .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,19,42,0) 35%,rgba(20,19,42,.65) 70%,var(--bg) 100%)}
+.sheet .back{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 14px);left:16px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(20,19,42,.45);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.sheet .back svg{width:22px;height:22px}
+.sheet .flag{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:18px;font-size:13px;font-weight:600;background:rgba(20,19,42,.45);padding:5px 11px;border-radius:999px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.sheet .head{position:absolute;z-index:2;left:22px;right:22px;bottom:18px}
+.sheet h2{font:800 31px/1.08 var(--font);letter-spacing:-.02em;margin:0 0 6px}
+.sheet .head p{font-weight:600;font-size:13.5px;margin:0;color:#E4E3F0}
+.sheet .inner{max-width:560px;margin:0 auto;padding:0 22px calc(30px + env(safe-area-inset-bottom,0px))}
+.acts{display:flex;align-items:center;gap:18px;margin:6px 0 4px}
+.acts button,.acts a{all:unset;cursor:pointer;display:grid;place-items:center;width:32px;height:32px;color:var(--text)}
+.acts svg{width:23px;height:23px}
+.acts .fav-on svg{fill:var(--pink);stroke:var(--pink)}
+.acts .rate{margin-left:auto;display:flex;align-items:center;gap:6px;font-weight:700;font-size:13.5px}
+.acts .rate svg{width:18px;height:18px;fill:var(--coral);stroke:none}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13.5px;margin:0}
+.kv dt{color:var(--muted);font-weight:500}
+.kv dd{margin:0;font-weight:600}
+.pdfnote{background:var(--card-solid);border-radius:10px;padding:12px 14px;font-size:13.5px;color:#D8D7E6;margin-top:12px}
+.pdfnote b{color:var(--coral)}
+
+/* ---------- Dates ---------- */
+.ev{background:var(--card-solid);border-radius:12px;padding:13px 14px;margin:10px 0}
+.ev.past{opacity:.55}
+.ev .t{font-weight:700;font-size:14.5px;line-height:1.35}
+.ev .meta{font-size:12.5px;color:var(--muted);margin:3px 0 10px}
+.ev .dates{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--muted)}
+.ev input[type=date],.add input{padding:6px 9px;border-radius:8px;border:0;background:var(--bg2);font-size:15px;color:var(--text);min-height:36px}
+.ev label{display:flex;align-items:center;gap:6px}
+.ev input[type=checkbox]{accent-color:var(--pink);width:16px;height:16px}
+.ev .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:5px;background:rgba(247,178,103,.16);color:var(--warn);margin-left:6px;vertical-align:2px}
+.badge.todo{background:rgba(255,107,129,.16);color:var(--bad)}
+.add{display:grid;gap:10px;background:var(--card-solid);border-radius:12px;padding:14px}
+.add input[type=text]{font-size:16px;padding:10px 12px}
+.add label{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+/* ---------- Steps ---------- */
+details.step{background:var(--card-solid);border-radius:12px;margin:10px 0}
+details.step summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;gap:12px;align-items:center;font-weight:700;font-size:14.5px}
+details.step summary::-webkit-details-marker{display:none}
+details.step summary .num{flex:0 0 32px;height:32px;border-radius:8px;background:var(--grad);display:grid;place-items:center;font-weight:800;font-size:14px}
+details.step summary .lbl small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+details.step summary .chev{margin-left:auto;width:18px;height:18px;transition:transform .2s;flex:0 0 auto}
+details.step[open] summary .chev{transform:rotate(180deg)}
+details.step .in{padding:0 14px 14px 58px;font-size:13.5px;color:#D8D7E6}
+details.step .in ul{padding-left:16px;margin:0}
+details.step .in li{margin:5px 0}
+.tbl{overflow-x:auto;margin:8px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:380px}
+.tbl th,.tbl td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-weight:600;color:var(--text)}
+
+/* ---------- Contacts ---------- */
+.clist{background:var(--card-solid);border-radius:12px;padding:2px 14px}
+.contact{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.contact:last-child{border-bottom:0}
+.contact b{font-weight:600;font-size:14px}
+.contact span{display:block;font-size:12px;color:var(--muted)}
+
+/* Bottom nav */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--bg);border-top:1px solid #222140;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs .wrap{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--nav-h);align-items:center}
+nav.tabs button{all:unset;cursor:pointer;justify-self:center;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:var(--dim)}
+nav.tabs button svg{width:23px;height:23px}
+nav.tabs button[aria-selected="true"]{background:var(--card-solid);color:#fff}
+nav.tabs button:focus-visible{outline:2px solid var(--coral)}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);background:var(--grad);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:80;white-space:nowrap}
+.toast.show{opacity:1}
+footer{font-size:11.5px;color:var(--dim);margin-top:28px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <img class="logo" src="https://file.garden/acorJcx0ggLd80GU/KEDGE/kbs-logo.png" alt="KEDGE" onerror="this.style.visibility='hidden'">
+  <div class="ttl" id="barTitle">UP KEDGE 2027<small>Départ Fall 2027</small></div>
+  <div class="me" aria-hidden="true">E</div>
+</header>
+
+<main>
+
+<!-- ============ ACCUEIL : la route ============ -->
+<section data-tab="home" class="on" aria-label="Accueil">
+  <div class="map" id="map" aria-label="Parcours de la sélection"></div>
+  <div class="trip">
+    <div>
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
+      <div class="big" id="tripBig"></div>
+    </div>
+    <div class="stack" id="stack"></div>
+  </div>
+  <div class="place" id="tripTitle"></div>
+  <div class="addr" id="tripAddr"></div>
+  <p class="small muted" id="tripNote"></p>
+  <button class="more" id="tripMore">Toutes les dates<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+
+  <div class="caps">À ne pas rater</div>
+  <div class="note bad"><b class="t">Ta liste de vœux t'engage</b><p>Dès que tu la soumets, tu t'engages à partir dans n'importe quelle université de la liste. Aucun désistement possible, sous peine de sanction (dont l'inéligibilité aux futures sélections).</p></div>
+  <div class="note warn"><b class="t">Ton TOEIC ne compte pas</b><p>Il faut un TOEFL iBT (code KEDGE 7189) ou un IELTS Academic en centre, valide pendant la sélection (février/mars 2027). MyBest Scores, IELTS Online et One Skill Retake refusés.</p></div>
+  <div class="note"><b class="t">Fall 2027 en M2 S1, c'est pour qui ?</b><p>Étudiants en césure ou en M1 Fast Track en 2026/27. En Pré-Master 2026/27, Fall 2027 = S1 de M1 (incompatible Manager Engagé / Apprentissage 24 mois). En M1 Global Track, ce sera Spring 2028.</p></div>
+  <div class="note"><b class="t">Nouveauté promo Pré-Master 2026/27</b><p>Un départ uniquement au S1 de M2 sera obligatoirement suivi du Parcours Ornikar à KEDGE au S2.</p></div>
+  <div class="note ok"><b class="t">Bon à savoir</b>
+    <ul class="clean">
+      <li>L'offre 2027 sort fin décembre 2026. La liste actuelle est celle de 2026 et peut changer.</li>
+      <li>Le formulaire de candidature n'engage à rien et ne demande aucun choix d'université.</li>
+      <li>International Excellence Track (Double-Diplômes, UCLA/UC Berkeley Ext., Route de la Soie) : à cocher dans le formulaire. Dans le doute, candidate aux deux.</li>
+      <li>Chinese/Indian/African Track, Colombian Track, International Track Pré-Master, Apprentis 24 mois : hors SAS, portails séparés.</li>
+      <li>Jamais deux échanges dans la même université. Ne contacte aucune université avant d'y être inscrit.</li>
+    </ul>
+  </div>
+
+  <div class="caps">Accès rapides</div>
+  <div class="quick">
+    <a class="qt hot" href="https://campusvirtuel.kedgebs.com/Default.aspx?noid=nav$oid53992293" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 5l9 5-9 5-9-5z"/><path d="M7 12v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4"/></svg>Page SAS PGE 2027</a>
+    <a class="qt" href="https://saswishes.kedgebs.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"/></svg>Interface SAS Web</a>
+    <a class="qt" href="https://file.garden/acorJcx0ggLd80GU/KEDGE/Universites_partenaires_KEDGE_PGE_2027.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>PDF analyse UP</a>
+    <a class="qt" href="https://www.ets.org/toefl.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/></svg>TOEFL iBT (ETS)</a>
+    <a class="qt" href="https://www.britishcouncil.fr/examen/ielts" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg>IELTS Academic</a>
+    <a class="qt" href="mailto:studyabroad.pge@kedgebs.com"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Study Abroad Office</a>
+  </div>
+</section>
+
+<!-- ============ EXPLORER ============ -->
+<section data-tab="unis" aria-label="Explorer">
+  <h1 class="h-big">Explorer</h1>
+  <p class="sub">Universités partenaires (liste SAS PGE 2026), filtrées sur tes pays et le départ M2 Fall.</p>
+  <form class="searchbar" id="sform" role="search" onsubmit="return false">
+    <input id="q" type="search" placeholder="Rechercher une destination..." aria-label="Rechercher">
+    <button type="submit" aria-label="Lancer la recherche"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
+  </form>
+  <div class="regions" id="regions" role="group" aria-label="Régions"></div>
+
+  <div class="caps" id="featTitle">Pour toi</div>
+  <div class="hscroll" id="feat"></div>
+
+  <div class="caps">Par pays</div>
+  <div class="hscroll tiles" id="tiles"></div>
+
+  <div class="caps" id="allTitle">Toutes les universités</div>
+  <div class="filters" role="group" aria-label="Filtres">
+    <select id="fType" aria-label="Type de départ">
+      <option value="M2F">Départ M2 Fall</option>
+      <option value="M1F">Départ M1 Fall</option>
+      <option value="M1S">Départ M1 Spring</option>
+      <option value="DD">Double-Diplôme M2</option>
+      <option value="">Tous types</option>
+    </select>
+    <select id="fLang" aria-label="Langue">
+      <option value="">Toutes langues</option>
+      <option value="EN">100 % anglais</option>
+      <option value="MIX">Mix anglais</option>
+      <option value="FR">100 % français</option>
+      <option value="DE">100 % allemand</option>
+    </select>
+    <select id="fSort" aria-label="Tri">
+      <option value="country">Tri par pays</option>
+      <option value="toefl">TOEFL croissant</option>
+      <option value="ielts">IELTS croissant</option>
+      <option value="name">Nom A à Z</option>
+    </select>
+    <button class="chip" id="fFav" aria-pressed="false">♥ Favoris</button>
+    <button class="chip" id="fOk" aria-pressed="false">Accessibles</button>
+  </div>
+  <div class="score">
+    <span>Mon score</span>
+    <label>TOEFL <input id="sToefl" type="number" inputmode="numeric" min="0" max="120" placeholder="/120"></label>
+    <label>IELTS <input id="sIelts" type="number" inputmode="decimal" min="0" max="9" step="0.5" placeholder="/9"></label>
+  </div>
+  <p class="count-line" id="count"></p>
+  <div id="list"></div>
+  <div class="note small" style="margin-top:18px"><b class="t">À propos des scores</b><p>Seuils TOEFL sur l'ancienne échelle /120 : pour la SAS 2027, KEDGE utilise le format /6 et convertit selon la grille d'ETS. Australie et Double-Diplôme UK : IELTS uniquement. TOEFL Home Edition pas accepté partout. Sous-sections, LV2 et moyenne : voir chaque Fiche Partenaire.</p></div>
+</section>
+
+<!-- ============ DATES ============ -->
+<section data-tab="cal" aria-label="Dates">
+  <h1 class="h-big">Dates</h1>
+  <p class="sub">Exporte tout vers ton agenda. Tes modifications restent sur ton téléphone.</p>
+  <div class="note warn"><b class="t">Dates exactes : Calendrier du Campus Virtuel</b><p>La page ne donne que des périodes, marquées <span class="badge" style="margin:0">approx.</span> Les échéances <span class="badge todo" style="margin:0">à compléter</span> n'ont leur date que sur le Calendrier officiel.</p></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px">
+    <button class="btn" id="exportAll">Exporter tout (.ics)</button>
+    <button class="btn ghost" id="resetCal">Réinitialiser</button>
+  </div>
+  <div id="events"></div>
+  <div class="caps">Ajouter une date</div>
+  <div class="add">
+    <input id="newTitle" type="text" placeholder="Intitulé (ex. Passage TOEFL)">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <label>Début <input id="newStart" type="date"></label>
+      <label>Fin <input id="newEnd" type="date"></label>
+    </div>
+    <button class="btn" id="addEv">Ajouter la date</button>
+  </div>
+</section>
+
+<!-- ============ DÉMARCHES ============ -->
+<section data-tab="steps" aria-label="Démarches">
+  <h1 class="h-big">Démarches</h1>
+  <p class="sub">Les 6 étapes de la SAS PGE 2027, dans l'ordre.</p>
+
+  <details class="step" open>
+    <summary><span class="num">1</span><span class="lbl">Candidater<small>Octobre 2026, Campus Virtuel</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="in"><ul>
+      <li>Formulaire : <b>Campus Virtuel &gt; Partir à l'international &gt; Formulaire de candidature SAS PGE</b>.</li>
+      <li>N'engage à rien, aucun choix d'université à faire.</li>
+      <li><b>Test interne LV2/LV3</b> (espagnol, allemand, italien, portugais) : à demander ici obligatoirement.</li>
+      <li><b>Départ M2</b> : coche aussi l'International Excellence Track si tu hésites.</li>
+      <li>Handicap ou santé : à signaler pour un aménagement.</li>
+      <li>Garde le <b>mail d'accusé de réception</b> (@kedge). Pas de mail = candidature non enregistrée.</li>
+      <li>Modifiable en ligne jusqu'à la clôture. Aucun retard accepté.</li>
+    </ul><p style="margin-top:10px"><a class="btn sm" href="https://campusvirtuel.kedgebs.com/Default.aspx?noid=nav$oid53992293" target="_blank" rel="noopener">Ouvrir le Campus Virtuel</a></p></div>
+  </details>
+
+  <details class="step">
+    <summary><span class="num">2</span><span class="lbl">Valider mes pré-requis<small>Langues, moyenne, avant les vœux</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="in">
+      <p>Imposés par l'université, non négociables, à valider <b>avant</b> la période de vœux.</p>
+      <div class="tbl"><table>
+        <thead><tr><th></th><th>TOEFL iBT</th><th>IELTS Academic</th></tr></thead>
+        <tbody>
+          <tr><th>Inscription</th><td>Site ETS, code <b>7189</b></td><td>British Council</td></tr>
+          <tr><th>Format</th><td>Centre ou Home Edition (pas accepté partout)</td><td>Centre uniquement</td></tr>
+          <tr><th>Envoi</th><td>Auto avec le code. Sinon Score Report à languesbordeaux@ ou languesmarseille@kedgebs.com</td><td>Test Report Form à languesbordeaux@ ou languesmarseille@kedgebs.com</td></tr>
+          <tr><th>Refusé</th><td>MyBest Scores</td><td>One Skill Retake, IELTS Online</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>Résultats en retard : capture des résultats en ligne à studyabroad.pge@kedgebs.com.</li>
+        <li><b>Validité 2 ans</b>, valide en février/mars 2027 et idéalement jusqu'à ton arrivée.</li>
+        <li>Plusieurs scores : meilleur total et ses sous-sections, pas de mélange.</li>
+        <li><b>LV2/LV3</b> : test interne ou score officiel (ELYTE, WIDAF...) à studyabroad.pge@kedgebs.com. L'université peut retester.</li>
+        <li><b>Autres pré-requis</b> (moyenne, expérience...) : preuve à fournir par toi à l'inscription.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="step">
+    <summary><span class="num">3</span><span class="lbl">Consulter l'offre<small>Publiée fin décembre 2026</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="in"><ul>
+      <li>En attendant, l'offre 2026 (Fiches Partenaires) est consultable. Elle change chaque année.</li>
+      <li>Lis la Fiche Partenaire de toutes les universités qui t'intéressent.</li>
+      <li>Témoignages : Easy Exchange (Pro-Act Be-U), via le Campus Virtuel.</li>
+      <li>Étudiants KEDGE partis : Liste départs, via le Campus Virtuel.</li>
+      <li>Étudiants des partenaires en échange à KEDGE : demande à studyabroad.pge@kedgebs.com.</li>
+    </ul></div>
+  </details>
+
+  <details class="step">
+    <summary><span class="num">4</span><span class="lbl">Vérifier mes infos<small>Interface SAS Web Étudiant</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="in">
+      <p>Rang, pré-requis pris en compte, départs possibles, puis liste de vœux. Lis le tutoriel avant. <b>Vérifier tes infos avant les vœux est ta responsabilité.</b></p>
+      <a class="btn sm" href="https://saswishes.kedgebs.com/" target="_blank" rel="noopener">Ouvrir l'Interface SAS Web</a>
+    </div>
+  </details>
+
+  <details class="step">
+    <summary><span class="num">5</span><span class="lbl">Faire ma liste de vœux<small>Choix définitif</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="in"><ul>
+      <li>Groupes selon le rang et le type d'échange, chacun avec sa période de vœux.</li>
+      <li>Pas de limite de vœux, mais jamais une université incertaine ou dont tu ne valides pas un pré-requis (attestation sur l'honneur, fausse déclaration = annulation et inéligibilité).</li>
+      <li>Affectation par rang, sur le <b>premier vœu ayant encore des places</b>. Définitif.</li>
+      <li>Aucune place : passage au groupe suivant. Rien au dernier groupe = pas de départ ce semestre.</li>
+      <li><b>IET</b> : première période pour tous ses candidats. Affecté = plus d'échanges classiques. Sinon retour à ton rang.</li>
+    </ul></div>
+  </details>
+
+  <details class="step">
+    <summary><span class="num">6</span><span class="lbl">Après la sélection<small>Inscription, Learning Agreement, visa</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="in"><ul>
+      <li>Affectation sur l'Interface SAS Web.</li>
+      <li>Dossier d'inscription : attends ton Responsable de Zone. <b>Passeport valide</b> prêt.</li>
+      <li>Learning Agreement signé par toi, l'université et KEDGE.</li>
+      <li>Bourses : portail Financement Mobilité.</li>
+      <li>Logement, visa, assurances : <b>aucun frais avant la confirmation d'inscription</b>.</li>
+    </ul></div>
+  </details>
+
+  <div class="caps">Classement et affectation</div>
+  <div class="note"><p>Classement établi par le Programme PGE (ses règles prévalent). Affectation selon 4 critères : les <b>pré-requis</b> validés, l'ordre de tes <b>vœux</b>, ton <b>rang</b> et les <b>places</b> restantes à ton rang.</p></div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section data-tab="contacts" aria-label="Contacts">
+  <h1 class="h-big">Contacts</h1>
+  <p class="sub">Consulte souvent ta boîte @kedge : tout passe par mail.</p>
+  <div class="clist">
+    <div class="contact"><div><b>Study Abroad Office</b><span>studyabroad.pge@kedgebs.com</span></div><a class="btn sm" href="mailto:studyabroad.pge@kedgebs.com">Écrire</a></div>
+    <div class="contact"><div><b>Mme Lauret</b><span>04 86 94 96 38</span></div><a class="btn sm" href="tel:+33486949638">Appeler</a></div>
+    <div class="contact"><div><b>Mme Conrad</b><span>05 56 84 63 14</span></div><a class="btn sm" href="tel:+33556846314">Appeler</a></div>
+    <div class="contact"><div><b>Rendez-vous à distance</b><span>Lien sur la page Campus Virtuel</span></div><a class="btn sm ghost" href="https://campusvirtuel.kedgebs.com/Default.aspx?noid=nav$oid53992293" target="_blank" rel="noopener">Ouvrir</a></div>
+    <div class="contact"><div><b>Langues Bordeaux</b><span>Envoi des scores</span></div><a class="btn sm ghost" href="mailto:languesbordeaux@kedgebs.com">Écrire</a></div>
+    <div class="contact"><div><b>Langues Marseille</b><span>Envoi des scores</span></div><a class="btn sm ghost" href="mailto:languesmarseille@kedgebs.com">Écrire</a></div>
+  </div>
+
+  <div class="caps">Réunions et replays</div>
+  <div class="note"><p>Toutes à venir (dates sur le Calendrier). Replays sur la page Campus Virtuel, connexion KEDGE requise.</p>
+    <ul class="clean">
+      <li>Tracks &amp; Infos SAS PGE 2027</li>
+      <li>Présentation générale de la SAS PGE 2027</li>
+      <li>Focus Double-Diplômes</li>
+      <li>Classement &amp; Interface SAS Web Etudiant &amp; Déroulement</li>
+    </ul>
+  </div>
+
+  <div class="caps">Sécurité par pays</div>
+  <div class="quick">
+    <a class="qt" href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/></svg>France Diplomatie</a>
+    <a class="qt" href="https://ilga.org" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>ILGA World</a>
+    <a class="qt" href="https://acninternational.org/religiousfreedomreport/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V8l8-5 8 5v11z"/><path d="M10 19v-5h4v5"/></svg>Liberté religieuse</a>
+  </div>
+  <footer>Contenu repris de la page SAS PGE 2027 (Campus Virtuel KEDGE) et de ton PDF d'analyse. La page officielle fait foi.<br>Données personnelles : protectiondesdonnees@kedgebs.com</footer>
+</section>
+</main>
+
+<!-- Detail sheet -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Fiche université"></div>
+
+<nav class="tabs" aria-label="Navigation">
+  <div class="wrap" role="tablist">
+    <button role="tab" data-go="unis" aria-label="Explorer les universités" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
+    <button role="tab" data-go="cal" aria-label="Dates" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
+    <button role="tab" data-go="home" aria-label="Accueil" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg></button>
+    <button role="tab" data-go="steps" aria-label="Démarches" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button>
+    <button role="tab" data-go="contacts" aria-label="Contacts" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></button>
+  </div>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---------- Helpers ---------- */
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200); }
+
+/* ---------- Tabs ---------- */
+const TITLES = {home:'Mon départ', unis:'Universités', cal:'Calendrier', steps:'Démarches', contacts:'Contacts'};
+function go(tab){
+  document.querySelectorAll('section[data-tab]').forEach(s => s.classList.toggle('on', s.dataset.tab === tab));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.go === tab ? 'true' : 'false'));
+  $('#barTitle').innerHTML = esc(TITLES[tab]) + '<small>UP KEDGE 2027</small>';
+  window.scrollTo(0, 0); store.set('upk27-tab', tab);
+}
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => go(b.dataset.go)));
+
+/* ---------- Data ---------- */
+const ALL3 = ['M1F','M1S','M2F'];
+const U = [
+  {c:'Allemagne',f:'🇩🇪',city:'Cologne',n:'University of Cologne (UoC)',l:'EN',t:ALL3,to:87,ie:6.0,site:'uni-koeln.de'},
+  {c:'Allemagne',f:'🇩🇪',city:'Francfort',n:'Frankfurt School of Finance & Management',l:'EN',t:ALL3,to:90,ie:7.0,site:'frankfurt-school.de',pdf:'Excellente école, très orientée finance.'},
+  {c:'Allemagne',f:'🇩🇪',city:'Hambourg',n:'Universität Hamburg (UHH), cursus allemand',l:'DE',t:ALL3,to:null,ie:null,site:'uni-hamburg.de',lv:'Niveau CECR en allemand requis (voir Fiche Partenaire).'},
+  {c:'Allemagne',f:'🇩🇪',city:'Hambourg',n:'Universität Hamburg (UHH), cursus anglais',l:'MIX',lt:'100 % anglais ou mix anglais/allemand',t:ALL3,to:72,ie:5.5,site:'uni-hamburg.de'},
+  {c:'Allemagne',f:'🇩🇪',city:'Hambourg',n:'Kühne Logistics University (KLU)',l:'EN',t:ALL3,to:90,ie:6.5,site:'the-klu.org',pdf:'Spécialisée logistique et supply chain, peu alignée avec le marketing digital. Fiche consultée ancienne (2020-21).'},
+  {c:'Allemagne',f:'🇩🇪',city:'Leipzig',n:'HHL Leipzig Graduate School of Management',l:'EN',t:ALL3,to:90,ie:7.0,site:'hhl.de',pdf:'Très forte en entrepreneuriat (Master in Entrepreneurship ouvert au choix).'},
+  {c:'Allemagne',f:'🇩🇪',city:'Münster',n:'Universität Münster',l:'MIX',lt:'100 % anglais ou mix anglais/allemand',t:ALL3,to:80,ie:6.0,site:'uni-muenster.de',pdf:'Option solide et abordable. Début des cours mi-octobre (semestre d\'hiver allemand).'},
+  {c:'Allemagne',f:'🇩🇪',city:'Vallendar',n:'WHU Otto Beisheim School of Management',l:'EN',t:ALL3,to:68,ie:5.5,site:'whu.edu',pdf:'Business school privée très sélective.'},
+  {c:'Australie',f:'🇦🇺',city:'Adelaide',n:'Adelaide University',l:'EN',t:ALL3,to:'NA',ie:6.5,lv:'TOEFL non accepté : IELTS uniquement.'},
+  {c:'Canada',f:'🇨🇦',city:'Edmonton, AB',n:'University of Alberta',l:'EN',t:['M1S','M2F'],to:90,ie:6.5,site:'ualberta.ca',pdf:'N°4 Canada dans ton classement. 5 places identifiées côté UAlberta, TOEIC refusé.'},
+  {c:'Canada',f:'🇨🇦',city:'Montréal, QC',n:'HEC Montréal, cursus français',l:'FR',t:ALL3,to:null,ie:null,site:'hec.ca'},
+  {c:'Canada',f:'🇨🇦',city:'Montréal, QC',n:'HEC Montréal, cursus mixte',l:'MIX',lt:'Mix anglais/français',t:ALL3,to:72,ie:5.5,site:'hec.ca',pdf:'N°3 Canada dans ton classement. Cours surtout de niveau bachelor.'},
+  {c:'Canada',f:'🇨🇦',city:'Québec, QC',n:'Université Laval, cursus français',l:'FR',t:ALL3,to:null,ie:null,site:'ulaval.ca'},
+  {c:'Canada',f:'🇨🇦',city:'Québec, QC',n:'Université Laval, cursus mixte',l:'MIX',lt:'Mix anglais/français',t:['DD',...ALL3],to:79,ie:6.5,site:'ulaval.ca',pdf:'N°7 Canada. Double diplôme menant à un MBA (spé marketing/digital), mais environnement francophone.'},
+  {c:'Canada',f:'🇨🇦',city:'Victoria, BC',n:'University of Victoria (UVic)',l:'EN',t:ALL3,to:95,ie:6.5,site:'uvic.ca',pdf:'N°6 Canada. Logement sur campus très limité (tirage au sort).'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Ansan',n:'Hanyang University (Campus ERICA)',l:'EN',t:ALL3,to:72,ie:5.5,site:'hanyang.ac.kr'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Busan',n:'Pusan National University (PNU)',l:'EN',t:ALL3,to:68,ie:5.5,site:'pusan.ac.kr',pdf:'Coûts bas, plus de 350 cours en anglais par semestre.'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Gwangju',n:'Chonnam National University',l:'EN',t:ALL3,to:68,ie:5.5,site:'jnu.ac.kr',pdf:'Logement sur campus obligatoire.'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Incheon',n:'INHA University',l:'EN',t:ALL3,to:71,ie:5.5,site:'inha.ac.kr'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Séoul',n:'Dongguk University (Campus Seoul)',l:'EN',t:['M1S','M2F'],to:68,ie:5.5,site:'dongguk.edu',pdf:'Séoul à coût raisonnable.'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Séoul',n:'Kyung Hee University (KHU, Campus Seoul)',l:'EN',t:ALL3,to:82,ie:6.5,site:'khu.ac.kr'},
+  {c:'Corée du Sud',f:'🇰🇷',city:'Ulsan',n:'UNIST',l:'EN',t:ALL3,to:80,ie:6.5,site:'unist.ac.kr',pdf:'Université tech, cours 100 % en anglais, résidence fournie.'},
+  {c:'Danemark',f:'🇩🇰',city:'Copenhague',n:'Copenhagen Business School (CBS)',l:'EN',t:ALL3,to:94,ie:7.0,site:'cbs.dk',pdf:'Une des meilleures business schools d\'Europe.'},
+  {c:'Danemark',f:'🇩🇰',city:'Esbjerg',n:'University of Southern Denmark (SDU, Esbjerg)',l:'EN',t:ALL3,to:88,ie:6.5,site:'sdu.dk'},
+  {c:'Danemark',f:'🇩🇰',city:'Odense',n:'University of Southern Denmark (SDU, Odense)',l:'EN',t:ALL3,to:88,ie:6.5,site:'sdu.dk',pdf:'Logement garanti si demande dans les délais.'},
+  {c:'Estonie',f:'🇪🇪',city:'Tallinn',n:'Estonian Business School (EBS)',l:'EN',t:ALL3,to:85,ie:6.0,site:'ebs.ee',pdf:'Tallinn, capitale très numérique, coûts modérés.'},
+  {c:'Estonie',f:'🇪🇪',city:'Tallinn',n:'Tallinn University of Technology (TalTech)',l:'EN',t:ALL3,to:72,ie:5.5,site:'taltech.ee',pdf:'Très aligné tech/digital/IA (AI in Business, International Business in the Digital Era).'},
+  {c:'États-Unis',f:'🇺🇸',city:'Akron, OH',n:'The University of Akron',l:'EN',t:ALL3,to:90,ie:6.5,site:'uakron.edu',pdf:'N°15 USA dans ton classement. Faible visibilité internationale.'},
+  {c:'États-Unis',f:'🇺🇸',city:'Birmingham, AL',n:'University of Alabama at Birmingham (UAB)',l:'EN',t:ALL3,to:85,ie:6.0,site:'uab.edu'},
+  {c:'États-Unis',f:'🇺🇸',city:'Laredo, TX',n:'Texas A&M International University (TAMIU)',l:'EN',t:ALL3,to:90,ie:6.5,site:'tamiu.edu',pdf:'N°17 USA. Très international mais loin du marketing digital et de la tech.'},
+  {c:'États-Unis',f:'🇺🇸',city:'Malibu, CA',n:'Pepperdine University',l:'EN',t:ALL3,to:100,ie:6.5,site:'pepperdine.edu',pdf:'N°3 USA. Échange de niveau MBA, région de LA. Fiche officielle trouvée datée 2020-21, à reconfirmer. GPA 3.0 demandé.'},
+  {c:'Finlande',f:'🇫🇮',city:'Jyväskylä',n:'University of Jyväskylä (JYU)',l:'EN',t:ALL3,to:72,ie:5.5,site:'jyu.fi'},
+  {c:'Finlande',f:'🇫🇮',city:'Lappeenranta',n:'LUT University',l:'EN',t:ALL3,to:90,ie:6.5,site:'lut.fi',pdf:'Université technologique, bon mix business et industrie.'},
+  {c:'Finlande',f:'🇫🇮',city:'Turku',n:'University of Turku',l:'EN',t:ALL3,to:72,ie:6.0,site:'utu.fi',pdf:'Cours de master en anglais, coût de la vie raisonnable.'},
+  {c:'Finlande',f:'🇫🇮',city:'Vaasa',n:'Hanken School of Economics (Campus Vaasa)',l:'EN',t:['M1F','M2F'],to:87,ie:6.5,site:'hanken.fi'},
+  {c:'Indonésie',f:'🇮🇩',city:'Surabaya',n:'Institut Teknologi Sepuluh Nopember (ITS)',l:'EN',t:ALL3,to:68,ie:5.5,site:'its.ac.id',pdf:'Coûts très bas, scolarité exonérée pour un semestre.'},
+  {c:'Japon',f:'🇯🇵',city:'Beppu',n:'Ritsumeikan Asia Pacific University (APU)',l:'EN',t:ALL3,to:79,ie:6.0,site:'apu.ac.jp'},
+  {c:'Japon',f:'🇯🇵',city:'Hachioji',n:'Soka University',l:'EN',t:ALL3,to:71,ie:5.5,site:'soka.ac.jp'},
+  {c:'Japon',f:'🇯🇵',city:'Nagoya',n:'NUCB Business School',l:'EN',t:ALL3,to:80,ie:6.0,site:'nucba.ac.jp',pdf:'Meilleure option japonaise pour un master business, 100 % méthode des cas.'},
+  {c:'Nouvelle-Zélande',f:'🇳🇿',city:'Hamilton',n:'The University of Waikato',l:'EN',t:['M1S','M2F'],to:80,ie:6.0,site:'waikato.ac.nz',pdf:'Logement garanti si demande à temps. Calendrier décalé : trimestre B de juillet à novembre.'},
+  {c:'Pays-Bas',f:'🇳🇱',city:'Amsterdam',n:'Vrije Universiteit Amsterdam (VU)',l:'EN',t:ALL3,to:92,ie:6.5,site:'vu.nl'},
+  {c:'Pays-Bas',f:'🇳🇱',city:'Enschede',n:'University of Twente',l:'EN',t:ALL3,to:80,ie:6.0,site:'utwente.nl',pdf:'Bon choix pour combiner business et technologie.'},
+  {c:'Pays-Bas',f:'🇳🇱',city:'Tilburg',n:'Fontys University of Applied Sciences',l:'EN',t:ALL3,to:72,ie:6.5,site:'fontys.nl'},
+  {c:'Pays-Bas',f:'🇳🇱',city:'Tilburg',n:'Tilburg University',l:'EN',t:['M1S','M2F'],to:90,ie:6.5,site:'tilburguniversity.edu'},
+  {c:'Philippines',f:'🇵🇭',city:'Quezon City',n:'Ateneo de Manila University (Loyola)',l:'EN',t:ALL3,to:80,ie:6.5,site:'ateneo.edu',pdf:'Pays anglophone, réputation académique forte.'},
+  {c:'Royaume-Uni',f:'🇬🇧',city:'Birmingham',n:'Aston University',l:'EN',t:ALL3,to:93,ie:6.5,site:'aston.ac.uk',pdf:'Double diplôme PGE cité dans la liste KEDGE des doubles diplômes, à confirmer (non affiché dans ce filtre).'},
+  {c:'Royaume-Uni',f:'🇬🇧',city:'Durham',n:'Durham University',l:'EN',t:ALL3,to:92,ie:6.5,site:'durham.ac.uk',pdf:'Échange postgraduate possible sur le MSc Marketing.'},
+  {c:'Royaume-Uni',f:'🇬🇧',city:'Glasgow',n:'Glasgow Caledonian University (GCU)',l:'EN',t:ALL3,to:78,ie:6.0,site:'gcu.ac.uk'},
+  {c:'Royaume-Uni',f:'🇬🇧',city:'Newcastle upon Tyne',n:'Newcastle University',l:'EN',t:ALL3,to:90,ie:6.5,site:'ncl.ac.uk'},
+  {c:'Suède',f:'🇸🇪',city:'Kalmar',n:'Linnaeus University (LNU, Kalmar)',l:'EN',t:ALL3,to:100,ie:7.0,site:'lnu.se',pdf:'Pas de logement fourni par l\'université.'},
+  {c:'Suède',f:'🇸🇪',city:'Karlstad',n:'Karlstad University',l:'EN',t:ALL3,to:90,ie:6.5,site:'kau.se',pdf:'Logement simple (chambres meublées, salle de bain privée).'},
+  {c:'Suède',f:'🇸🇪',city:'Linköping',n:'Linköping University (LiU, Valla)',l:'EN',t:ALL3,to:68,ie:6.0,site:'liu.se',pdf:'Logement accessible.'},
+  {c:'Suède',f:'🇸🇪',city:'Lund',n:'Lund University',l:'EN',t:ALL3,to:90,ie:6.5,site:'lu.se',pdf:'Très haut niveau, logement non garanti.'},
+  {c:'Suède',f:'🇸🇪',city:'Malmö',n:'Malmö University',l:'EN',t:ALL3,to:68,ie:5.5,site:'mau.se'},
+  {c:'Suède',f:'🇸🇪',city:'Stockholm',n:'Stockholm School of Economics (SSE)',l:'EN',t:ALL3,to:100,ie:7.0,site:'hhs.se',pdf:'Très prestigieuse, cours de MSc ouverts. Logement non garanti.'},
+  {c:'Suède',f:'🇸🇪',city:'Umeå',n:'Umeå University',l:'EN',t:['DD',...ALL3],to:90,ie:6.5,site:'umu.se',pdf:'Double diplôme PGE, Master in Management avec spécialisation Marketing possible.'},
+  {c:'Suède',f:'🇸🇪',city:'Växjö',n:'Linnaeus University (LNU, Växjö)',l:'EN',t:ALL3,to:100,ie:7.0,site:'lnu.se',pdf:'Pas de logement fourni par l\'université.'},
+  {c:'Thaïlande',f:'🇹🇭',city:'Bangkok',n:'Mahidol University College of Management (CMMU)',l:'EN',t:ALL3,to:79,ie:6.5,site:'cm.mahidol.ac.th',pdf:'École de management de niveau master.'}
+].map((u,i) => ({...u, id:'u'+i}));
+const REGION_OF = {'Allemagne':'EU','Danemark':'EU','Estonie':'EU','Finlande':'EU','Pays-Bas':'EU','Royaume-Uni':'EU','Suède':'EU',
+  'Canada':'NA','États-Unis':'NA','Corée du Sud':'AS','Japon':'AS','Indonésie':'AS','Philippines':'AS','Thaïlande':'AS','Australie':'OC','Nouvelle-Zélande':'OC'};
+U.forEach(u => u.r = REGION_OF[u.c] || 'EU');
+const REGIONS = [['','Tous'],['NA','Amérique du Nord'],['EU','Europe'],['AS','Asie'],['OC','Océanie']];
+const LANG = {EN:'100 % anglais', MIX:'Mix anglais', FR:'100 % français', DE:'100 % allemand'};
+const TYPE = {M1F:'M1 Fall', M1S:'M1 Spring', M2F:'M2 Fall', DD:'Double-Diplôme M2'};
+const fmtIe = v => v.toFixed(1).replace('.', ',');
+
+/* ---------- Illustrations (paysages générés) ---------- */
+const PAL = {
+  EU:{s1:'#7FA6DA',s2:'#F1D2C1',sun:'#FFF4E2',m:['#A3AECB','#5F6F97','#2B3456']},
+  NA:{s1:'#5E4E9A',s2:'#F7A072',sun:'#FFE2B0',m:['#9A75A9','#55427E','#231C44']},
+  AS:{s1:'#F3A9C2',s2:'#FCE1CF',sun:'#FFFFFF',m:['#D88DAE','#8D5B97','#38264E']},
+  OC:{s1:'#45B3D3',s2:'#F7E5AA',sun:'#FFF7CF',m:['#63ADA3','#2D7979','#154245']}
+};
+function rnd(seed){ let s = seed * 9301 + 49297; return () => (s = (s * 9301 + 49297) % 233280) / 233280; }
+let sceneN = 0;
+function scene(u, cls){
+  const p = PAL[u.r], k = 'g' + (sceneN++), R = rnd(parseInt(u.id.slice(1)) + 7);
+  const sunX = 60 + R() * 280, sunY = 50 + R() * 50;
+  const layer = (base, amp, col, f) => {
+    const ph = R() * 6, ph2 = R() * 6; let pts = '0,300 ';
+    for (let x = 0; x <= 400; x += 10) pts += x + ',' + (base - amp * Math.abs(Math.sin(x * f + ph)) - amp * .35 * Math.sin(x * f * 2.7 + ph2)).toFixed(1) + ' ';
+    return `<polygon points="${pts}400,300" fill="${col}"/>`;
+  };
+  return `<svg class="${cls || ''}" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.s1}"/><stop offset="1" stop-color="${p.s2}"/></linearGradient></defs>
+    <rect width="400" height="300" fill="url(#${k})"/>
+    <circle cx="${sunX}" cy="${sunY}" r="24" fill="${p.sun}" opacity=".9"/>
+    ${layer(175, 70, p.m[0], .012)}${layer(215, 80, p.m[1], .018)}${layer(260, 60, p.m[2], .026)}
+  </svg>`;
+}
+
+/* ---------- State ---------- */
+let favs = new Set(store.get('upk27-favs', []));
+const sc = store.get('upk27-score', {toefl:'', ielts:''});
+$('#sToefl').value = sc.toefl; $('#sIelts').value = sc.ielts;
+const F = Object.assign({region:'', country:'', lang:'', type:'M2F', sort:'country', fav:false, ok:false}, store.get('upk27-filters2', {}));
+const saveF = () => store.set('upk27-filters2', F);
+
+function myScore(){ return { toefl: parseFloat($('#sToefl').value), ielts: parseFloat($('#sIelts').value) }; }
+function access(u){
+  const s = myScore(); const hasT = !isNaN(s.toefl), hasI = !isNaN(s.ielts);
+  if (!hasT && !hasI) return null;
+  if (u.to === null && u.ie === null) return {state:'lang', msg:'LV requise'};
+  const okT = hasT && typeof u.to === 'number' && s.toefl >= u.to;
+  const okI = hasI && u.ie !== null && s.ielts >= u.ie;
+  if (okT || okI) return {state:'ok', msg:'Score OK'};
+  const gaps = [];
+  if (hasT && typeof u.to === 'number') gaps.push('TOEFL +' + (u.to - s.toefl));
+  if (hasT && u.to === 'NA') gaps.push('TOEFL refusé');
+  if (hasI && u.ie !== null) gaps.push('IELTS +' + fmtIe(Math.round((u.ie - s.ielts) * 10) / 10));
+  return {state:'no', msg: gaps.join(', ') || 'Non comparable'};
+}
+const scoreMain = u => typeof u.to === 'number' ? {v:u.to, l:'TOEFL'} : (u.ie !== null ? {v:fmtIe(u.ie), l:'IELTS'} : {v:'LV', l:'langue'});
+
+/* ---------- Explorer ---------- */
+function renderRegions(){
+  $('#regions').innerHTML = REGIONS.map(([k, l]) => `<button data-r="${k}" aria-pressed="${F.region === k}">${l}</button>`).join('');
+}
+$('#regions').addEventListener('click', e => {
+  const b = e.target.closest('[data-r]'); if (!b) return;
+  F.region = b.dataset.r; if (F.country && REGION_OF[F.country] !== F.region && F.region) F.country = '';
+  saveF(); renderRegions(); renderUnis();
+});
+function base(){ return U.filter(u => !F.region || u.r === F.region); }
+
+function renderFeat(){
+  let items = base().filter(u => favs.has(u.id)), title = 'Tes favoris';
+  if (!items.length){ items = base().filter(u => u.r === 'NA' && u.l !== 'FR'); title = 'À la une'; }
+  if (!items.length){ items = base().slice(0, 6); }
+  $('#featTitle').textContent = title;
+  $('#feat').innerHTML = items.map(u => {
+    const s = scoreMain(u);
+    return `<button class="dcard" data-open="${u.id}">
+      <div class="img">${scene(u)}</div>
+      <div class="tx">
+        <div class="nm">${esc(u.n)}</div>
+        <div class="sc">${s.v}<small>${s.l}</small></div>
+        <div class="row"><span class="ct">${u.f} ${esc(u.city)}</span><span class="btn sm">Voir</span></div>
+      </div></button>`;
+  }).join('');
+}
+function renderTiles(){
+  const counts = {}; base().forEach(u => counts[u.c] = (counts[u.c] || 0) + 1);
+  const cs = Object.keys(counts).sort((a, b) => a.localeCompare(b, 'fr'));
+  $('#tiles').innerHTML = cs.map(c => `<button class="tile" data-c="${esc(c)}" aria-pressed="${F.country === c}"><span class="n">${counts[c]}</span><span class="fl">${U.find(u => u.c === c).f}</span>${esc(c)}</button>`).join('');
+}
+$('#tiles').addEventListener('click', e => {
+  const b = e.target.closest('[data-c]'); if (!b) return;
+  F.country = F.country === b.dataset.c ? '' : b.dataset.c; saveF(); renderTiles(); renderList();
+  $('#allTitle').scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+function renderList(){
+  const q = $('#q').value.trim().toLowerCase();
+  let rows = base().filter(u =>
+    (!q || (u.n + ' ' + u.city + ' ' + u.c).toLowerCase().includes(q)) &&
+    (!F.country || u.c === F.country) && (!F.lang || u.l === F.lang) && (!F.type || u.t.includes(F.type)) &&
+    (!F.fav || favs.has(u.id)) && (!F.ok || (access(u) || {}).state === 'ok'));
+  const num = v => typeof v === 'number' ? v : 999;
+  if (F.sort === 'toefl') rows.sort((a, b) => num(a.to) - num(b.to));
+  else if (F.sort === 'ielts') rows.sort((a, b) => num(a.ie) - num(b.ie));
+  else if (F.sort === 'name') rows.sort((a, b) => a.n.localeCompare(b.n, 'fr'));
+  else rows.sort((a, b) => a.c.localeCompare(b.c, 'fr') || a.city.localeCompare(b.city, 'fr'));
+  $('#allTitle').textContent = F.country ? F.country : 'Toutes les universités';
+  $('#count').textContent = rows.length + (rows.length > 1 ? ' universités' : ' université') + (F.country ? '. Touche le pays à nouveau pour tout revoir.' : '');
+  if (!rows.length){ $('#list').innerHTML = '<div class="empty">Aucune université avec ces filtres. Retire un filtre ou vide la recherche.</div>'; return; }
+  $('#list').innerHTML = rows.map(u => {
+    const a = access(u);
+    const toTxt = u.to === 'NA' ? 'refusé' : (u.to ?? 'n/a');
+    const req = (u.to === null && u.ie === null) ? '<b>LV</b><br>requise' : `TOEFL <b>${toTxt}</b><br>IELTS <b>${u.ie !== null ? fmtIe(u.ie) : 'n/a'}</b>`;
+    const tags = [`<span class="tag">${esc(u.lt ? 'Mix anglais' : LANG[u.l])}</span>`];
+    if (u.t.includes('DD')) tags.push('<span class="tag dd">Double-Diplôme</span>');
+    if (a && a.state !== 'lang') tags.push(`<span class="tag ${a.state === 'ok' ? 'ok' : 'no'}">${esc(a.msg)}</span>`);
+    if (favs.has(u.id)) tags.push('<span class="tag fav">♥</span>');
+    return `<button class="lrow" data-open="${u.id}">
+      <span class="th">${scene(u)}<span class="fl">${u.f}</span></span>
+      <span><span class="nm">${esc(u.n)}</span><br><span class="ct">${esc(u.city)}, ${esc(u.c)}</span><span class="tags">${tags.join('')}</span></span>
+      <span class="req">${req}</span></button>`;
+  }).join('');
+}
+function renderUnis(){ renderFeat(); renderTiles(); renderList(); }
+
+document.addEventListener('click', e => { const o = e.target.closest('[data-open]'); if (o) openDetail(o.dataset.open); });
+$('#q').addEventListener('input', renderList);
+$('#sform').addEventListener('submit', () => { $('#q').blur(); $('#allTitle').scrollIntoView({behavior:'smooth', block:'start'}); });
+$('#fType').value = F.type; $('#fLang').value = F.lang; $('#fSort').value = F.sort;
+$('#fFav').setAttribute('aria-pressed', F.fav); $('#fOk').setAttribute('aria-pressed', F.ok);
+[['#fType','type'],['#fLang','lang'],['#fSort','sort']].forEach(([s, k]) => $(s).addEventListener('input', () => { F[k] = $(s).value; saveF(); renderList(); }));
+[['#fFav','fav'],['#fOk','ok']].forEach(([s, k]) => $(s).addEventListener('click', () => { F[k] = !F[k]; $(s).setAttribute('aria-pressed', F[k]); saveF(); renderList(); }));
+['#sToefl','#sIelts'].forEach(s => $(s).addEventListener('input', () => { store.set('upk27-score', {toefl:$('#sToefl').value, ielts:$('#sIelts').value}); renderList(); }));
+
+/* ---------- Fiche université ---------- */
+let current = null;
+function openDetail(id){
+  const u = U.find(x => x.id === id); if (!u) return; current = id;
+  const fav = favs.has(id), s = scoreMain(u), a = access(u);
+  const search = 'https://www.google.com/search?q=' + encodeURIComponent(u.n.replace(/,.*$/, '') + ' incoming exchange students fact sheet');
+  $('#sheet').innerHTML = `
+    <div class="hero">${scene(u, 'sc')}
+      <button class="back" id="back" aria-label="Retour"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+      <span class="flag">${u.f} ${esc(u.c)}</span>
+      <div class="head"><h2>${esc(u.n)}</h2><p>${esc(u.city)}. ${esc(u.lt || LANG[u.l])}.</p></div>
+    </div>
+    <div class="inner">
+      <div class="acts">
+        <button id="dFav" class="${fav ? 'fav-on' : ''}" aria-label="${fav ? 'Retirer des favoris' : 'Ajouter aux favoris'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></button>
+        <button id="dShare" aria-label="Partager"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 3 3 10.5l7 2.5 2.5 7z"/><path d="m10 13 4-4"/></svg></button>
+        ${u.site ? `<a href="https://${u.site}" target="_blank" rel="noopener" aria-label="Site officiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg></a>` : ''}
+        <span class="rate"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"/></svg>${s.l} ${s.v}</span>
+      </div>
+      ${a && a.state !== 'lang' ? `<div class="note ${a.state === 'ok' ? 'ok' : 'bad'}" style="margin-top:12px"><b class="t">${a.state === 'ok' ? 'Ton score suffit' : 'Score insuffisant'}</b><p>${a.state === 'ok' ? 'Pour le seuil global affiché. Vérifie les sous-sections sur la Fiche Partenaire.' : esc(a.msg)}</p></div>` : ''}
+      <div class="caps">Informations</div>
+      <dl class="kv">
+        <dt>Départs</dt><dd>${u.t.map(t => TYPE[t]).join(', ')}</dd>
+        <dt>Langue</dt><dd>${esc(u.lt || LANG[u.l])}</dd>
+        <dt>TOEFL iBT</dt><dd>${u.to === 'NA' ? 'Non accepté' : (u.to ?? 'Non concerné')}${typeof u.to === 'number' ? ' (échelle /120)' : ''}</dd>
+        <dt>IELTS</dt><dd>${u.ie !== null ? fmtIe(u.ie) : 'Non concerné'}</dd>
+        <dt>Région</dt><dd>${REGIONS.find(r => r[0] === u.r)[1]}</dd>
+      </dl>
+      ${u.lv ? `<div class="pdfnote">${esc(u.lv)}</div>` : ''}
+      ${u.pdf ? `<div class="pdfnote"><b>Ton PDF.</b> ${esc(u.pdf)}</div>` : ''}
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
+        <a class="btn" href="${search}" target="_blank" rel="noopener">Fiche échange</a>
+        <a class="btn ghost" href="https://campusvirtuel.kedgebs.com/Default.aspx?noid=nav$oid53992293" target="_blank" rel="noopener">Fiche Partenaire KEDGE</a>
+      </div>
+      <p class="small muted" style="margin-top:14px">Sous-sections TOEFL/IELTS, LV2, moyenne et autres pré-requis : sur la Fiche Partenaire de l'université (Campus Virtuel).</p>
+    </div>`;
+  $('#sheet').classList.add('on'); $('#sheet').scrollTop = 0; document.body.style.overflow = 'hidden';
+  if (!history.state || history.state.sheet !== true) history.pushState({sheet:true}, '');
+  $('#back').focus();
+  $('#back').onclick = () => history.back();
+  $('#dFav').onclick = () => {
+    favs.has(id) ? favs.delete(id) : favs.add(id); store.set('upk27-favs', [...favs]);
+    const on = favs.has(id); $('#dFav').classList.toggle('fav-on', on); toast(on ? 'Ajouté aux favoris' : 'Retiré des favoris');
+  };
+  $('#dShare').onclick = async () => {
+    const text = `${u.n} (${u.city}, ${u.c}). TOEFL ${u.to ?? 'n/a'}, IELTS ${u.ie !== null ? fmtIe(u.ie) : 'n/a'}.`;
+    try{ if (navigator.share){ await navigator.share({title:u.n, text}); } else { await navigator.clipboard.writeText(text); toast('Copié'); } }catch(e){}
+  };
+}
+function closeDetail(){
+  $('#sheet').classList.remove('on'); document.body.style.overflow = '';
+  renderUnis(); renderHome();
+  const el = document.querySelector(`[data-open="${current}"]`); if (el) el.focus({preventScroll:true});
+}
+window.addEventListener('popstate', () => { if ($('#sheet').classList.contains('on')) closeDetail(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#sheet').classList.contains('on')) history.back(); });
+
+/* ---------- Calendrier ---------- */
+const CAMPUS = 'https://campusvirtuel.kedgebs.com/Default.aspx?noid=nav$oid53992293';
+const DEFAULT_EVENTS = [
+  {id:'cand', title:'SAS PGE 2027 : période de candidature', start:'2026-10-01', end:'2026-10-31', approx:true, note:'Formulaire sur Campus Virtuel > Partir à l\'international. Dates exactes sur le Calendrier. Vérifie le mail d\'accusé de réception.'},
+  {id:'reu1', title:'Présentation "Tracks & Infos SAS PGE 2027"', start:'', end:'', approx:false, note:'Date sur le Calendrier officiel.'},
+  {id:'reu2', title:'Vidéochat "Présentation générale de la SAS PGE 2027"', start:'', end:'', approx:false, note:'Date sur le Calendrier officiel.'},
+  {id:'reu3', title:'Vidéochat "Focus Double-Diplômes"', start:'', end:'', approx:false, note:'Date sur le Calendrier officiel.'},
+  {id:'reu4', title:'Vidéochat "Classement & Interface SAS Web & Déroulement"', start:'', end:'', approx:false, note:'Date sur le Calendrier officiel.'},
+  {id:'toefl', title:'Date limite d\'inscription TOEFL iBT / IELTS Academic', start:'', end:'', approx:false, note:'TOEFL : code KEDGE 7189. IELTS en centre uniquement.'},
+  {id:'offre', title:'Publication de l\'offre d\'universités SAS PGE 2027', start:'2026-12-31', end:'', approx:true, note:'Annoncée pour fin décembre 2026. Relire toutes les Fiches Partenaires.'},
+  {id:'lv2', title:'Date limite envoi score officiel LV2/LV3', start:'', end:'', approx:false, note:'Attestation à studyabroad.pge@kedgebs.com.'},
+  {id:'scores', title:'Date limite de réception des scores TOEFL/IELTS', start:'', end:'', approx:false, note:'Aucun score pris en compte après cette date.'},
+  {id:'sas', title:'Ouverture de l\'Interface SAS Web Étudiant', start:'', end:'', approx:false, note:'Vérifier rang et pré-requis avant les vœux. saswishes.kedgebs.com'},
+  {id:'select', title:'Sélection : TOEFL/IELTS valide obligatoire', start:'2027-02-01', end:'2027-03-31', approx:true, note:'La page indique février/mars 2027 pour la sélection.'},
+  {id:'voeux', title:'Ma période de vœux', start:'', end:'', approx:false, note:'Dépend de ton groupe (rang, type d\'échange). La liste soumise t\'engage.'},
+  {id:'insc', title:'Inscriptions administratives auprès des universités', start:'2027-03-01', end:'2027-11-30', approx:true, note:'Entre mars et novembre 2027 selon l\'université. Passeport valide. Aucun frais avant confirmation.'}
+];
+let events = store.get('upk27-events-v1', null) || JSON.parse(JSON.stringify(DEFAULT_EVENTS));
+const saveEvents = () => store.set('upk27-events-v1', events);
+const todayStr = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+const days = (a, b) => Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 86400000);
+const endOf = e => e.end && e.end >= e.start ? e.end : e.start;
+const when = e => !e.start ? 'Date à compléter' : (e.end && e.end > e.start ? 'Du ' + fmt(e.start) + ' au ' + fmt(e.end) : fmt(e.start));
+const sorted = () => [...events].sort((a, b) => (a.start || '9999').localeCompare(b.start || '9999'));
+
+function renderEvents(){
+  const t = todayStr();
+  $('#events').innerHTML = sorted().map(e => `<div class="ev ${e.start && endOf(e) < t ? 'past' : ''}" data-id="${e.id}">
+      <div class="t">${esc(e.title)}${e.approx ? '<span class="badge">approx.</span>' : ''}${!e.start ? '<span class="badge todo">à compléter</span>' : ''}</div>
+      <div class="meta">${esc(when(e))}${e.note ? '. ' + esc(e.note) : ''}</div>
+      <div class="dates">
+        <label>Début <input type="date" data-f="start" value="${e.start}"></label>
+        <label>Fin <input type="date" data-f="end" value="${e.end}"></label>
+        <label><input type="checkbox" data-f="approx" ${e.approx ? 'checked' : ''}> approx.</label>
+      </div>
+      <div class="row">
+        ${e.start ? `<a class="btn sm ghost" href="${gcal(e)}" target="_blank" rel="noopener">Google Agenda</a><button class="btn sm ghost" data-ics="${e.id}">Agenda (.ics)</button>` : ''}
+        ${e.custom ? `<button class="btn sm ghost" data-del="${e.id}">Supprimer</button>` : ''}
+      </div></div>`).join('');
+  renderHome();
+}
+$('#events').addEventListener('change', e => {
+  const box = e.target.closest('.ev'); if (!box) return;
+  const ev = events.find(x => x.id === box.dataset.id); const f = e.target.dataset.f;
+  if (f === 'approx') ev.approx = e.target.checked; else if (f) ev[f] = e.target.value;
+  if (ev.end && ev.start && ev.end < ev.start) ev.end = '';
+  saveEvents(); renderEvents(); toast('Date enregistrée');
+});
+$('#events').addEventListener('click', e => {
+  const i = e.target.closest('[data-ics]'); if (i){ downloadICS([events.find(x => x.id === i.dataset.ics)], 'up-kedge-2027-' + i.dataset.ics + '.ics'); return; }
+  const d = e.target.closest('[data-del]'); if (d){ events = events.filter(x => x.id !== d.dataset.del); saveEvents(); renderEvents(); toast('Date supprimée'); }
+});
+$('#addEv').addEventListener('click', () => {
+  const title = $('#newTitle').value.trim(), start = $('#newStart').value, end = $('#newEnd').value;
+  if (!title || !start){ toast('Il faut un intitulé et une date de début'); return; }
+  events.push({id:'c' + Date.now(), title, start, end: end >= start ? end : '', approx:false, note:'', custom:true});
+  saveEvents(); $('#newTitle').value = ''; $('#newStart').value = ''; $('#newEnd').value = ''; renderEvents(); toast('Date ajoutée');
+});
+$('#resetCal').addEventListener('click', () => {
+  if (!confirm('Remettre les dates par défaut ? Tes modifications et dates ajoutées seront effacées.')) return;
+  events = JSON.parse(JSON.stringify(DEFAULT_EVENTS)); saveEvents(); renderEvents(); toast('Dates réinitialisées');
+});
+$('#exportAll').addEventListener('click', () => {
+  const dated = events.filter(e => e.start);
+  if (!dated.length){ toast('Aucune date à exporter'); return; }
+  downloadICS(dated, 'up-kedge-2027.ics');
+});
+
+const compact = s => s.replace(/-/g, '');
+function nextDay(s){ const d = new Date(s + 'T12:00:00'); d.setDate(d.getDate() + 1); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
+const descOf = e => (e.approx ? '[Date approximative, à confirmer sur le Calendrier officiel] ' : '') + (e.note || '') + ' Page SAS PGE 2027 : ' + CAMPUS;
+const gcal = e => 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(e.title) + '&dates=' + compact(e.start) + '/' + nextDay(endOf(e)) + '&details=' + encodeURIComponent(descOf(e));
+const icsEsc = s => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+function fold(line){ const out = []; while (line.length > 74){ out.push(line.slice(0, 74)); line = ' ' + line.slice(74); } out.push(line); return out.join('\r\n'); }
+function buildICS(list){
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+  const L = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//UP KEDGE 2027//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:UP KEDGE 2027'];
+  list.forEach(e => L.push('BEGIN:VEVENT', 'UID:' + e.id + '-' + compact(e.start) + '@up-kedge-2027', 'DTSTAMP:' + stamp,
+    'DTSTART;VALUE=DATE:' + compact(e.start), 'DTEND;VALUE=DATE:' + nextDay(endOf(e)),
+    'SUMMARY:' + icsEsc((e.approx ? '(approx.) ' : '') + e.title), 'DESCRIPTION:' + icsEsc(descOf(e)), 'URL:' + CAMPUS,
+    'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEsc(e.title), 'TRIGGER:-PT15H', 'END:VALARM', 'END:VEVENT'));
+  L.push('END:VCALENDAR');
+  return L.map(fold).join('\r\n') + '\r\n';
+}
+function downloadICS(list, name){
+  const text = buildICS(list);
+  if (window.navigator.standalone === true){ window.location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(text); return; }
+  const url = URL.createObjectURL(new Blob([text], {type:'text/calendar;charset=utf-8'}));
+  const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000); toast('Fichier .ics téléchargé');
+}
+
+/* ---------- Accueil : la carte du parcours ---------- */
+const MS = [
+  {id:'cand', label:'Candidature', at:[62,70]},
+  {id:'offre', label:'Offre publiée', at:[128,138]},
+  {id:'select', label:'Sélection', at:[196,88]},
+  {id:'voeux', label:'Vœux', at:[248,176]},
+  {id:'insc', label:'Inscription', at:[318,132]},
+  {id:'fall', label:'Départ Fall 2027', at:[372,214]}
+];
+let selMs = null;
+function msState(m, t){
+  if (m.id === 'fall') return {done:false, ev:null};
+  const ev = events.find(e => e.id === m.id);
+  return {ev, done: !!(ev && ev.start && endOf(ev) < t)};
+}
+function crPath(pts){
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++){
+    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+    d += ` C${(p1[0] + (p2[0] - p0[0]) / 6).toFixed(1)},${(p1[1] + (p2[1] - p0[1]) / 6).toFixed(1)} ${(p2[0] - (p3[0] - p1[0]) / 6).toFixed(1)},${(p2[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p2[0]},${p2[1]}`;
+  }
+  return d;
+}
+const CONTOURS = (() => {
+  let s = '';
+  [[300,70,9],[90,250,7],[220,300,5]].forEach(([cx, cy, n], ci) => {
+    for (let k = 1; k <= n; k++){
+      let d = '';
+      for (let i = 0; i <= 72; i++){
+        const t = i / 72 * Math.PI * 2, r = 22 * k + 7 * Math.sin(3 * t + k + ci) + 4 * Math.sin(5 * t + k * .7);
+        d += (i ? 'L' : 'M') + (cx + r * Math.cos(t)).toFixed(1) + ',' + (cy + r * Math.sin(t) * .78).toFixed(1);
+      }
+      s += `<path d="${d}Z" fill="none" stroke="#2A2946" stroke-width="1"/>`;
+    }
+  });
+  return s;
+})();
+function renderHome(){
+  const t = todayStr();
+  const states = MS.map(m => msState(m, t));
+  const curIdx = Math.max(0, states.findIndex(s => !s.done));
+  if (selMs === null) selMs = curIdx;
+  const route = crPath([[-20,64], ...MS.map(m => m.at), [420,232]]);
+  const doneUpTo = curIdx; // done segment up to current pin
+  const donePath = crPath([[-20,64], ...MS.slice(0, doneUpTo + 1).map(m => m.at)]);
+  let pins = '';
+  MS.forEach((m, i) => {
+    const [x, y] = m.at, st = states[i], sel = i === selMs;
+    pins += `<g class="pin" data-ms="${i}" tabindex="0" role="button" aria-label="${esc(m.label)}">
+      <circle class="hit" cx="${x}" cy="${y}" r="16" fill="transparent"/>`;
+    if (sel){
+      pins += `<rect x="${x - 11}" y="${y - 36}" width="22" height="22" rx="5" fill="#E9407A"/>
+        <path d="M${x - 5} ${y - 14} L${x} ${y - 8} L${x + 5} ${y - 14}Z" fill="#E9407A"/>
+        <circle cx="${x}" cy="${y - 25}" r="4" fill="none" stroke="#fff" stroke-width="2"/>
+        <circle cx="${x}" cy="${y}" r="6" fill="#fff"/>`;
+    } else if (st.done){
+      pins += `<circle cx="${x}" cy="${y}" r="6.5" fill="#fff" stroke="#E9407A" stroke-width="3"/>`;
+    } else {
+      pins += `<circle cx="${x}" cy="${y}" r="6" fill="#14132A" stroke="#fff" stroke-width="2.4"/>`;
+    }
+    pins += `</g>`;
+  });
+  // bubble for selected
+  const m = MS[selMs], st = states[selMs];
+  const sub = m.id === 'fall' ? 'Fall 2027' : (st.ev && st.ev.start ? (st.done ? 'Terminé' : (st.ev.approx ? 'approx. ' : '') + new Date(st.ev.start + 'T12:00:00').toLocaleDateString('fr-FR', {month:'short', year:'numeric'})) : 'date à compléter');
+  const bw = Math.max(m.label.length, sub.length) * 6.4 + 22;
+  let bx = Math.min(Math.max(m.at[0] - bw / 2, 8), 392 - bw), by = m.at[1] - 82;
+  if (by < 6) by = m.at[1] + 16;
+  const bubble = `<g pointer-events="none"><rect x="${bx}" y="${by}" width="${bw}" height="38" rx="6" fill="#E9407A"/>
+    <text x="${bx + 11}" y="${by + 16}" fill="#fff" font-family="Poppins, sans-serif" font-size="11.5" font-weight="700">${esc(m.label)}</text>
+    <text x="${bx + 11}" y="${by + 30}" fill="#FFE1EA" font-family="Poppins, sans-serif" font-size="10" font-weight="500">★ ${esc(sub)}</text></g>`;
+  $('#map').innerHTML = `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+    <defs><linearGradient id="rt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E9407A"/><stop offset="1" stop-color="#F5835F"/></linearGradient></defs>
+    ${CONTOURS}
+    <path d="${route}" fill="none" stroke="url(#rt)" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+    <path d="${donePath}" fill="none" stroke="url(#rt)" stroke-width="4.5" stroke-linecap="round"/>
+    ${pins}${bubble}</svg>`;
+
+  // trip info
+  let big = '', unit = '', addr = '', note = '';
+  if (m.id === 'fall'){ big = '2027'; unit = 'Fall'; addr = 'Semestre d\'automne 2027<br>Dates selon l\'université d\'accueil'; note = 'Départ en M2 S1 si tu es en césure ou en M1 Fast Track en 2026/27.'; }
+  else if (!st.ev || !st.ev.start){ big = '?'; unit = 'à compléter'; addr = 'Date sur le Calendrier du Campus Virtuel'; note = st.ev ? st.ev.note : ''; }
+  else {
+    const ev = st.ev, ongoing = ev.start <= t && endOf(ev) >= t;
+    if (st.done){ big = 'OK'; unit = 'terminé'; }
+    else if (ongoing){ const n = days(t, endOf(ev)); big = String(n); unit = n > 1 ? 'jours restants' : 'jour restant'; }
+    else { const n = days(t, ev.start); big = String(n); unit = n > 1 ? 'jours' : 'jour'; }
+    addr = esc(when(ev)) + (ev.approx ? '<br>Date approximative, à confirmer' : '') + (ongoing ? '<br>En cours' : '');
+    note = ev.note;
+  }
+  $('#tripBig').innerHTML = esc(big) + `<span>${esc(unit)}</span>`;
+  $('#tripTitle').textContent = cap(m.label);
+  $('#tripAddr').innerHTML = addr;
+  $('#tripNote').textContent = note || '';
+
+  // flag stack
+  const favCountries = [...new Set(U.filter(u => favs.has(u.id)).map(u => u.c))];
+  const allCountries = [...new Set(U.map(u => u.c))];
+  const shown = (favCountries.length ? favCountries : ['États-Unis','Canada']).slice(0, 2);
+  const rest = (favCountries.length ? favCountries.length : allCountries.length) - shown.length;
+  $('#stack').innerHTML = shown.map(c => `<span class="f">${U.find(u => u.c === c).f}</span>`).join('') +
+    `<span class="others">+${rest} pays<span>${favs.size ? favs.size + ' en favoris' : U.length + ' universités'}</span></span>`;
+}
+$('#map').addEventListener('click', e => { const p = e.target.closest('[data-ms]'); if (p){ selMs = +p.dataset.ms; renderHome(); } });
+$('#map').addEventListener('keydown', e => { const p = e.target.closest('[data-ms]'); if (p && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); selMs = +p.dataset.ms; renderHome(); document.querySelector(`[data-ms="${selMs}"]`).focus(); } });
+$('#tripMore').addEventListener('click', () => go('cal'));
+$('#stack').addEventListener('click', () => go('unis'));
+
+/* ---------- Init ---------- */
+renderRegions(); renderUnis(); renderEvents();
+const lastTab = store.get('upk27-tab', 'home'); go(lastTab);
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
